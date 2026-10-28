@@ -1,0 +1,7 @@
+Flask==3.1.1
+gspread==6.2.1
+google-auth==2.40.3
+requests>=2.31
+Pillow>=10.4
+pillow-heif>=0.18
+gunicorn>=22.0
