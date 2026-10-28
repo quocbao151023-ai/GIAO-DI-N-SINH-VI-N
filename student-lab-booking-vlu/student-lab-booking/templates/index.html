@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d72134">
+  <title>Cổng đăng ký phòng Lab | Trường Đại học Văn Lang</title>
+
+  <!-- Giao diện chung với Hệ thống quản lý phòng Lab -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="portal">
+
+<!-- =====================================================
+     THANH TIỆN ÍCH
+====================================================== -->
+<div class="util-bar">
+  <div class="container">
+    <strong class="util-faculty">KHOA KỸ THUẬT VÀ QUẢN LÝ CÔNG NGHIỆP</strong>
+    <div class="util-links">
+      <a href="tel:02871098256"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.275 21.885c-.105 0-.21-.005-.315-.02A19.167 19.167 0 0 1 2.135 5.04c-.09-.76.15-1.53.665-2.11C3.325 2.34 4.08 2 4.87 2h3.995c.565 0 1.06.38 1.21.925l.99 3.69c.115.43-.01.895-.325 1.21l-1.91 1.91a14.425 14.425 0 0 0 5.44 5.44l1.91-1.91c.315-.315.775-.44 1.21-.325l3.69.99c.545.145.925.645.925 1.21v3.995c0 .79-.34 1.545-.93 2.07a2.7 2.7 0 0 1-1.795.685l-.005-.005ZM4.87 3.5c-.36 0-.705.155-.945.425-.235.265-.34.595-.3.94a17.664 17.664 0 0 0 15.51 15.51c.34.04.675-.065.94-.3.27-.24.425-.585.425-.945v-3.805l-3.365-.9-2.59 2.59-.485-.25A15.92 15.92 0 0 1 7.235 9.94l-.25-.485 2.59-2.59-.9-3.365H4.87Z" fill="currentColor"/></svg><span>028.71098.256 (4340)</span></a>
+      <a href="mailto:k.iem@vlu.edu.vn"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.25 4H4.75A2.755 2.755 0 0 0 2 6.75v10.5A2.755 2.755 0 0 0 4.75 20h14.5A2.755 2.755 0 0 0 22 17.25V6.75A2.755 2.755 0 0 0 19.25 4ZM4.75 5.5h14.5c.69 0 1.25.56 1.25 1.25v.975l-8.5 4.91-8.5-4.91V6.75c0-.69.56-1.25 1.25-1.25Zm14.5 13H4.75c-.69 0-1.25-.56-1.25-1.25V9.46l8.5 4.91 8.5-4.91v7.79c0 .69-.56 1.25-1.25 1.25Z" fill="currentColor"/></svg><span>k.iem@vlu.edu.vn</span></a>
+      <a href="https://www.vlu.edu.vn/" target="_blank" rel="noopener noreferrer"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.485 2 2 6.485 2 12s4.485 10 10 10 10-4.485 10-10S17.515 2 12 2Zm0 18.245A11.783 11.783 0 0 1 9.76 17.2a12.566 12.566 0 0 1 4.48 0A11.783 11.783 0 0 1 12 20.245Zm0-4.745c-1.03 0-1.975.115-2.845.29-.32-.895-.55-1.915-.62-3.04h6.935a11.252 11.252 0 0 1-.62 3.04 14.34 14.34 0 0 0-2.845-.29H12Zm-3.465-4.25c.075-1.125.3-2.145.62-3.04.87.175 1.815.29 2.845.29 1.03 0 1.975-.115 2.845-.29.32.895.55 1.915.62 3.04H8.53h.005ZM12 7c-.805 0-1.545-.075-2.24-.2A11.783 11.783 0 0 1 12 3.755c.545.525 1.47 1.55 2.24 3.045-.695.12-1.435.2-2.24.2Zm2.045-3.24c1.365.34 2.6 1.01 3.62 1.92-.55.275-1.19.54-1.915.765a13.067 13.067 0 0 0-1.7-2.685h-.005Zm-5.79 2.685c-.73-.225-1.365-.49-1.915-.765a8.48 8.48 0 0 1 3.62-1.92c-.56.68-1.175 1.58-1.7 2.685h-.005ZM7.68 7.84a12.874 12.874 0 0 0-.645 3.41H3.54c.145-1.66.77-3.18 1.735-4.43.665.36 1.47.72 2.405 1.02Zm-.645 4.91c.07 1.26.305 2.405.645 3.41-.935.295-1.74.66-2.405 1.02a8.433 8.433 0 0 1-1.735-4.43h3.495Zm1.22 4.805a13.067 13.067 0 0 0 1.7 2.685 8.538 8.538 0 0 1-3.62-1.92c.55-.275 1.19-.54 1.915-.765h.005Zm7.49 0c.73.225 1.365.49 1.915.765a8.48 8.48 0 0 1-3.62 1.92c.56-.68 1.175-1.58 1.7-2.685h.005Zm.575-1.395c.34-1.005.575-2.15.645-3.41h3.495a8.433 8.433 0 0 1-1.735 4.43 14.13 14.13 0 0 0-2.405-1.02Zm.645-4.91a12.874 12.874 0 0 0-.645-3.41 13.74 13.74 0 0 0 2.405-1.02 8.433 8.433 0 0 1 1.735 4.43h-3.495Z" fill="currentColor"/></svg>vlu.edu.vn</a>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     HEADER + MENU (3 chức năng của cổng sinh viên)
+====================================================== -->
+<header class="site-header">
+  <div class="container">
+
+    <a class="brand brand-logo-only" href="/" aria-label="Trang chủ">
+      <img src="{{ url_for('static', filename='images/logo-vlu.png') }}" alt="Van Lang University">
+    </a>
+
+    <!-- class "hero-tab" + data-tab-target: app.js dùng để chuyển trang -->
+    <nav class="main-nav portal-nav" aria-label="Chức năng">
+      <button type="button" class="hero-tab active" data-tab-target="guidePanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4a3.745 3.745 0 0 0-3 1.51A3.745 3.745 0 0 0 9 4H2v16h7.5c.69 0 1.25.56 1.25 1.25h2.5c0-.69.56-1.25 1.25-1.25H22V4h-7Zm-3.75 15.13a2.726 2.726 0 0 0-1.75-.63h-6v-13H9c1.24 0 2.25 1.01 2.25 2.25v11.38Zm9.25-.63h-6c-.665 0-1.275.235-1.75.63V7.75c0-1.24 1.01-2.25 2.25-2.25h5.5v13Z" fill="currentColor"/></svg><span>Hướng dẫn</span></button>
+      <button type="button" class="hero-tab" data-tab-target="schedulePanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 3h.75A2.755 2.755 0 0 1 21 5.75v12.5A2.755 2.755 0 0 1 18.25 21H5.75A2.755 2.755 0 0 1 3 18.25V5.75A2.755 2.755 0 0 1 5.75 3h.75V2H8v1h8V2h1.5v1Zm-11 1.5h-.75c-.69 0-1.25.56-1.25 1.25V7.5h15V5.75c0-.69-.56-1.25-1.25-1.25h-.75V6H16V4.5H8V6H6.5V4.5Zm-.75 15h12.5c.69 0 1.25-.56 1.25-1.25V9h-15v9.25c0 .69.56 1.25 1.25 1.25Zm5.5-8.5h1.5v5H14v1.5h-4V16h1.25v-2.5H10V12h1.25v-1Z" fill="currentColor"/></svg><span>Lịch phòng Lab</span></button>
+      <button type="button" class="hero-tab" data-tab-target="bookingPanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 2v1.5h3V22H4V3.5h3V2h10Zm-1.5 1.5h-7v.75c0 .69.56 1.25 1.25 1.25h4.5c.69 0 1.25-.56 1.25-1.25V3.5Zm-10 17h13V5h-1.605c-.33 1.15-1.39 2-2.645 2h-4.5c-1.26 0-2.315-.85-2.645-2H5.5v15.5Zm5.75-10.75h1.5v2.75h2.75V14h-2.75v2.75h-1.5V14H8.5v-1.5h2.75V9.75Z" fill="currentColor"/></svg><span>Đăng ký sử dụng</span></button>
+      <button type="button" class="hero-tab" data-tab-target="handoverPanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 2v1.5h3V22H4V3.5h3V2h10Zm-1.5 1.5h-7v.75c0 .69.56 1.25 1.25 1.25h4.5c.69 0 1.25-.56 1.25-1.25V3.5Zm-10 17h13V5h-1.605c-.33 1.15-1.39 2-2.645 2h-4.5c-1.26 0-2.315-.85-2.645-2H5.5v15.5Zm3.78-7.28 1.47 1.47 3.97-3.97 1.06 1.06-4.145 4.145a1.245 1.245 0 0 1-.885.365c-.32 0-.64-.12-.885-.365L8.22 14.28l1.06-1.06Z" fill="currentColor"/></svg><span>Bàn giao phòng</span></button>
+    </nav>
+
+  </div>
+</header>
+
+<!-- =====================================================
+     BANNER
+====================================================== -->
+<section class="page-hero portal-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <span>Cổng sinh viên</span>
+    </div>
+
+    <h1>Cổng đăng ký sử dụng phòng Lab</h1>
+    <p>Xem lịch trống, đăng ký sử dụng và bàn giao phòng Lab của Khoa Kỹ thuật và Quản lý Công nghiệp.</p>
+  </div>
+</section>
+
+<!-- =====================================================
+     NỘI DUNG
+====================================================== -->
+<main class="page-body">
+  <div class="container page-container">
+
+    <!-- =================================================
+         LỊCH PHÒNG LAB
+    ================================================== -->
+    <section id="schedulePanel" class="content-panel">
+
+      <div class="card calendar-card">
+
+        <div class="panel-heading">
+          <div>
+            <h2 class="section-title">Lịch sử dụng phòng Lab</h2>
+            <p class="panel-desc">Nhấn vào một thẻ Lab còn chỗ để chuyển sang phiếu đăng ký và tự điền Phòng – Ngày – Ca.</p>
+          </div>
+
+          <button type="button" class="btn btn-outline" id="refreshSchedule"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 7.03V3H21v5.75c0 .69-.56 1.25-1.25 1.25H14V8.5h4.63a7.505 7.505 0 0 0-6.63-4 7.482 7.482 0 0 0-6.93 4.63l-1.385-.575A8.973 8.973 0 0 1 12 3c3.06 0 5.86 1.56 7.5 4.03ZM5.37 15.5a7.532 7.532 0 0 0 6.63 4 7.482 7.482 0 0 0 6.93-4.63l1.385.575A8.973 8.973 0 0 1 12 21a9.034 9.034 0 0 1-7.5-4.025V21H3v-5.75c0-.69.56-1.25 1.25-1.25H10v1.5H5.37Z" fill="currentColor"/></svg> Làm mới</button>
+        </div>
+
+        <div class="calendar-top">
+
+          <div class="field">
+            <label for="labFilter">Phòng Lab</label>
+            <select id="labFilter">
+              <option value="all">Tất cả các Lab</option>
+              <option value="Lab 1">Lab 1</option>
+              <option value="Lab 2">Lab 2</option>
+              <option value="Lab 3">Lab 3</option>
+            </select>
+          </div>
+
+          <div class="calendar-head">
+            <button type="button" id="previousWeek" aria-label="Tuần trước">‹</button>
+            <h3 id="weekTitle">Đang tải lịch...</h3>
+            <button type="button" id="nextWeek" aria-label="Tuần sau">›</button>
+          </div>
+
+          <div class="field">
+            <label for="shiftFilter">Ca</label>
+            <select id="shiftFilter">
+              <option value="all">Tất cả các ca</option>
+              <option value="Ca 1">Ca 1 (07:00 – 09:30)</option>
+              <option value="Ca 2">Ca 2 (09:30 – 12:00)</option>
+              <option value="Ca 3">Ca 3 (13:00 – 15:30)</option>
+              <option value="Ca 4">Ca 4 (15:30 – 18:00)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="lab-summary-row">
+
+          <div class="summary-box">
+            <div class="summary-title">Tổng lượt đăng ký<br>trong tuần</div>
+            <div class="summary-number" id="totalBookings">0</div>
+          </div>
+
+          <div class="progress-box">
+            <div class="progress-item">
+              <div class="progress-info"><span>Lab 1</span><strong id="lab1Usage">0%</strong></div>
+              <div class="progress-bar"><div class="progress-fill lab1" id="lab1Bar"></div></div>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info"><span>Lab 2</span><strong id="lab2Usage">0%</strong></div>
+              <div class="progress-bar"><div class="progress-fill lab2" id="lab2Bar"></div></div>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info"><span>Lab 3</span><strong id="lab3Usage">0%</strong></div>
+              <div class="progress-bar"><div class="progress-fill lab3" id="lab3Bar"></div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="calendar-legend">
+          <span><i class="legend-box lab1"></i> Lab 1</span>
+          <span><i class="legend-box lab2"></i> Lab 2</span>
+          <span><i class="legend-box lab3"></i> Lab 3</span>
+          <span><i class="legend-box full"></i> Đã đủ 9/9 nhóm</span>
+        </div>
+
+        <div class="calendar-scroll">
+          <div id="calendarGrid" class="calendar-grid">
+            <div class="calendar-state">Đang tải dữ liệu lịch...</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =================================================
+         ĐĂNG KÝ SỬ DỤNG
+    ================================================== -->
+    <section id="bookingPanel" class="content-panel">
+
+      <div class="panel-intro card">
+        <div>
+          <h2 class="section-title">Phiếu đăng ký sử dụng phòng Lab</h2>
+          <p class="panel-desc">Điền đủ các mục có dấu <b>*</b>. Sau khi gửi, hệ thống cấp <b>mã đăng ký</b> dùng để bàn giao phòng.</p>
+        </div>
+        <button type="button" class="btn btn-outline" data-tab-target="schedulePanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.25H5.31l5.22-5.22-1.06-1.06-6.145 6.145a1.258 1.258 0 0 0 0 1.77L9.47 19.03l1.06-1.06-5.22-5.22H21v-1.5Z" fill="currentColor"/></svg> Xem lại lịch</button>
+      </div>
+
+      <form id="bookingForm" class="booking-form" novalidate>
+
+        <!-- 01. NGƯỜI ĐẠI DIỆN -->
+        <section class="card form-card">
+
+          <div class="form-title">
+            <span class="step">01</span>
+            <div>
+              <h3>Thông tin người đại diện</h3>
+              <p>Người chịu trách nhiệm chính cho lượt đăng ký.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+
+            <label class="field">
+              <span>Họ và tên <b>*</b></span>
+              <input id="repName" type="text" maxlength="120" placeholder="Nguyễn Văn A" required>
+            </label>
+
+            <label class="field">
+              <span>MSSV <b>*</b></span>
+              <input id="repId" type="text" inputmode="numeric" placeholder="Ví dụ: 2274802010001" required>
+            </label>
+
+            <label class="field">
+              <span>Email trường <b>*</b></span>
+              <input id="schoolEmail" type="email" maxlength="254" placeholder="ten.mssv@vanlanguni.vn" required>
+            </label>
+
+            <label class="field">
+              <span>Email cá nhân</span>
+              <input id="personalEmail" type="email" maxlength="254" placeholder="Không bắt buộc">
+            </label>
+
+            <label class="field">
+              <span>Số điện thoại <b>*</b></span>
+              <input id="phone" type="tel" maxlength="30" placeholder="09xx xxx xxx" required>
+            </label>
+
+            <label class="field">
+              <span>Hình thức đăng ký <b>*</b></span>
+              <select id="registerType" required>
+                <option value="">-- Chọn hình thức --</option>
+                <option value="Cá nhân">Cá nhân</option>
+                <option value="Nhóm">Nhóm</option>
+              </select>
+              <small class="field-hint" id="registerTypeHint">Chọn “Nhóm” để thêm thành viên (2–12 người).</small>
+            </label>
+
+          </div>
+
+        </section>
+
+        <!-- 02. THÔNG TIN SỬ DỤNG -->
+        <section class="card form-card">
+
+          <div class="form-title">
+            <span class="step">02</span>
+            <div>
+              <h3>Thông tin sử dụng phòng</h3>
+              <p>Ưu tiên chọn khung giờ trực tiếp từ lịch phòng Lab.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+
+            <label class="field">
+              <span>Mục đích sử dụng <b>*</b></span>
+              <select id="purpose" required>
+                <option value="">-- Chọn mục đích sử dụng --</option>
+                <option value="Phục vụ học tập">Phục vụ học tập</option>
+                <option value="Làm việc nhóm">Làm việc nhóm</option>
+                <option value="Phục vụ nghiên cứu khoa học">Phục vụ nghiên cứu khoa học</option>
+                <option value="Thực hiện đồ án">Thực hiện đồ án</option>
+                <option value="Chuẩn bị seminar / báo cáo">Chuẩn bị seminar / báo cáo</option>
+                <option value="Thực hành ngoài giờ">Thực hành ngoài giờ</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Phòng Lab <b>*</b></span>
+              <select id="room" required>
+                <option value="">-- Chọn phòng --</option>
+                <option value="Lab 1">Lab 1</option>
+                <option value="Lab 2">Lab 2</option>
+                <option value="Lab 3">Lab 3</option>
+              </select>
+            </label>
+
+            <div class="field">
+              <span>Khu vực sử dụng <b>*</b> <a class="field-link" href="#guideLabs" data-open-guide>Xem sơ đồ</a></span>
+              <input id="area" type="text" maxlength="200" placeholder="Ví dụ: B1, B2 hoặc C3 (theo sơ đồ)" required autocomplete="off">
+              <div class="area-picker" id="areaPicker" role="group" aria-label="Chọn nhanh mã bàn / máy" hidden></div>
+            </div>
+
+            <label class="field">
+              <span>Ngày sử dụng <b>*</b></span>
+              <input id="bookingDate" type="date" required>
+            </label>
+
+            <div class="field full">
+              <span>Ca sử dụng <b>*</b> <small class="field-hint">Chọn được nhiều ca trong cùng ngày</small></span>
+              <div class="shift-picker" id="shiftPicker" role="group" aria-label="Ca sử dụng">
+                <label class="shift-chip"><input type="checkbox" value="Ca 1"><span><b>Ca 1</b><small>07:00 – 09:30</small><em></em></span></label>
+                <label class="shift-chip"><input type="checkbox" value="Ca 2"><span><b>Ca 2</b><small>09:30 – 12:00</small><em></em></span></label>
+                <label class="shift-chip"><input type="checkbox" value="Ca 3"><span><b>Ca 3</b><small>13:00 – 15:30</small><em></em></span></label>
+                <label class="shift-chip"><input type="checkbox" value="Ca 4"><span><b>Ca 4</b><small>15:30 – 18:00</small><em></em></span></label>
+              </div>
+              <!-- Giữ ô chọn ca gốc (ẩn) để app.js dùng như cũ: luôn là ca đầu tiên đã chọn -->
+              <select id="shift" hidden aria-hidden="true" tabindex="-1">
+                <option value="">-- Chọn ca --</option>
+                <option value="Ca 1">Ca 1 (07:00 – 09:30)</option>
+                <option value="Ca 2">Ca 2 (09:30 – 12:00)</option>
+                <option value="Ca 3">Ca 3 (13:00 – 15:30)</option>
+                <option value="Ca 4">Ca 4 (15:30 – 18:00)</option>
+              </select>
+            </div>
+
+            <label class="field">
+              <span>Hỗ trợ kỹ thuật</span>
+              <select id="techSupport">
+                <option value="Không">Không</option>
+                <option value="Có">Có</option>
+              </select>
+            </label>
+
+          </div>
+
+          <div id="selectedSlot" class="selected-slot"></div>
+
+        </section>
+
+        <!-- 03. THÀNH VIÊN (chỉ hiện khi hình thức là Nhóm) -->
+        <section class="card form-card" id="membersCard" hidden>
+
+          <div class="members-top">
+            <div class="form-title">
+              <span class="step">03</span>
+              <div>
+                <h3>Danh sách thành viên</h3>
+                <p>Người đại diện được tự động thêm vào danh sách.</p>
+              </div>
+            </div>
+
+            <button type="button" id="addMember" class="btn btn-dark"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.25h-7.25V4h-1.5v7.25H4v1.5h7.25V20h1.5v-7.25H20v-1.5Z" fill="currentColor"/></svg> Thêm thành viên</button>
+          </div>
+
+          <div class="handover-mode" role="radiogroup" aria-labelledby="handoverModeTitle">
+            <p class="handover-mode-title" id="handoverModeTitle">Khi bàn giao phòng, nhóm chọn hình thức <b>*</b></p>
+            <div class="handover-mode-options">
+              <label class="mode-option">
+                <input type="radio" name="handoverMode" value="ĐẠI DIỆN">
+                <span>
+                  <strong>Người đại diện bàn giao cho cả nhóm</strong>
+                  <small>Chỉ người đại diện chụp ảnh và gửi bàn giao. Nếu quên, cả nhóm cùng bị tính chưa bàn giao.</small>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="handoverMode" value="TỪNG THÀNH VIÊN">
+                <span>
+                  <strong>Từng thành viên tự bàn giao</strong>
+                  <small>Mỗi thành viên tự gửi bàn giao bằng MSSV của mình. Ai quên thì người đó bị tính.</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div id="membersList"></div>
+
+          <p id="memberCounter" class="member-counter">1/12 người</p>
+
+        </section>
+
+        <!-- CAM KẾT -->
+        <section class="card form-card">
+
+          <div class="form-title">
+            <span class="step" id="commitStep">03</span>
+            <div>
+              <h3>Cam kết &amp; gửi đăng ký</h3>
+              <p>Kiểm tra lại thông tin trước khi gửi.</p>
+            </div>
+          </div>
+
+          <div class="handover-rule-note" role="note">
+            <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.86 21c-.45 0-.855-.235-1.08-.625a1.23 1.23 0 0 1 0-1.25L10.915 3.14a1.25 1.25 0 0 1 2.17 0l9.14 15.99c.225.39.22.86 0 1.25-.225.39-.63.625-1.08.625L21.14 21H2.86Zm.435-1.5H20.71L12 4.26 3.29 19.5h.005Zm9.455-5V9h-1.5v5.5h1.5ZM13 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/></svg>
+            <div>
+              <strong>Lưu ý quy định bàn giao phòng</strong>
+              <p>Mỗi lượt sử dụng phải được bàn giao trên cổng ngay trong ngày, kèm đủ ảnh <b>trước</b> và <b>sau</b> khi sử dụng.</p>
+              <ul>
+                <li><b>Lần 1 – 2</b> chưa bàn giao trong tháng: ghi nhận vào phiếu điểm danh, kỹ thuật viên xem xét điểm danh của nhóm / sinh viên liên quan.</li>
+                <li><b>Đủ 3 lần</b> chưa bàn giao trong tháng: người đăng ký bị tạm khóa đăng ký (cá nhân hoặc nhóm) đến hết tháng.</li>
+              </ul>
+              <p class="note-foot">Lượt nhóm chưa bàn giao được tính cho tất cả thành viên trong nhóm.</p>
+            </div>
+          </div>
+
+          <label class="commitment">
+            <input id="commitment" type="checkbox">
+            <span>Tôi đã đọc và cam kết tuân thủ <a href="#guideRules" data-read-guide>nội quy, quy định an toàn và hướng dẫn sử dụng phòng Lab</a>, quy trình 5S, giữ gìn thiết bị và bàn giao phòng đúng quy định sau khi sử dụng.</span>
+          </label>
+
+          <p class="commit-gate" id="commitGate"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4a3.745 3.745 0 0 0-3 1.51A3.745 3.745 0 0 0 9 4H2v16h7.5c.69 0 1.25.56 1.25 1.25h2.5c0-.69.56-1.25 1.25-1.25H22V4h-7Zm-3.75 15.13a2.726 2.726 0 0 0-1.75-.63h-6v-13H9c1.24 0 2.25 1.01 2.25 2.25v11.38Zm9.25-.63h-6c-.665 0-1.275.235-1.75.63V7.75c0-1.24 1.01-2.25 2.25-2.25h5.5v13Z" fill="currentColor"/></svg><span>Bắt buộc: bấm vào ô cam kết để đọc hết trang Hướng dẫn trước khi gửi đăng ký.</span></p>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-outline">Nhập lại</button>
+            <button type="submit" id="submitButton" class="btn btn-primary">Gửi đăng ký</button>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+        </section>
+
+      </form>
+
+    </section>
+
+    <!-- =================================================
+         BÀN GIAO PHÒNG
+    ================================================== -->
+    <section id="handoverPanel" class="content-panel">
+
+      <div class="panel-intro card">
+        <div>
+          <h2 class="section-title">Phiếu bàn giao phòng Lab</h2>
+          <p class="panel-desc">Xác minh lượt đăng ký, khai báo khu vực phụ trách và gửi hình ảnh hiện trạng trước – sau khi sử dụng.</p>
+        </div>
+        <button type="button" class="btn btn-outline" data-tab-target="schedulePanel"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.25H5.31l5.22-5.22-1.06-1.06-6.145 6.145a1.258 1.258 0 0 0 0 1.77L9.47 19.03l1.06-1.06-5.22-5.22H21v-1.5Z" fill="currentColor"/></svg> Xem lại lịch</button>
+      </div>
+
+      <form id="handoverForm" class="booking-form" enctype="multipart/form-data" novalidate>
+
+        <!-- 01. XÁC MINH -->
+        <section class="card form-card">
+
+          <div class="handover-card-header">
+            <div class="form-title">
+              <span class="step">01</span>
+              <div>
+                <h3>Xác minh lượt đăng ký</h3>
+                <p>Nhập đúng mã đăng ký và MSSV của thành viên phụ trách.</p>
+              </div>
+            </div>
+
+            <div class="handover-top-action">
+              <button type="button" id="verifyHandoverButton" class="btn btn-dark">Kiểm tra thông tin</button>
+            </div>
+          </div>
+
+          <div id="handoverVerifyInputs" class="handover-verify-inputs">
+            <div class="form-grid">
+
+              <label class="field">
+                <span>Mã đăng ký (ID) <b>*</b></span>
+                <input id="handoverIdKey" name="id_key" type="text" maxlength="50" autocomplete="off" placeholder="Ví dụ: L1C217072026-01" required>
+              </label>
+
+              <label class="field">
+                <span>MSSV người bàn giao <b>*</b></span>
+                <input id="handoverStudentId" name="student_id" type="text" inputmode="numeric" autocomplete="off" placeholder="Nhập MSSV" required>
+              </label>
+
+            </div>
+          </div>
+
+          <div id="handoverVerifyMessage" class="handover-verify-message"></div>
+
+          <div id="handoverBookingInfo" class="handover-booking-info">
+
+            <div class="verified-head">
+              <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 12c0 5.515 4.485 10 10 10s10-4.485 10-10S17.515 2 12 2 2 6.485 2 12Zm1.5 0c0-4.685 3.815-8.5 8.5-8.5 4.685 0 8.5 3.815 8.5 8.5 0 4.685-3.815 8.5-8.5 8.5-4.685 0-8.5-3.815-8.5-8.5Zm6.115 3.175c.245.245.565.365.885.365.32 0 .64-.12.885-.365L17.28 9.28l-1.06-1.06-5.72 5.72-2.22-2.22-1.06 1.06 2.395 2.395Z" fill="currentColor"/></svg>
+              <div>
+                <strong>Đã xác minh lượt đăng ký</strong>
+                <span>Thông tin dưới đây được lấy từ phiếu đăng ký và không thể chỉnh sửa.</span>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="field"><span>Mã đăng ký</span><input id="verifiedIdKey" type="text" readonly></label>
+              <label class="field"><span>Người bàn giao</span><input id="verifiedStudentName" type="text" readonly></label>
+              <label class="field"><span>Email</span><input id="verifiedStudentEmail" type="text" readonly></label>
+              <label class="field"><span>Phòng Lab</span><input id="verifiedRoom" type="text" readonly></label>
+              <label class="field"><span>Ca sử dụng</span><input id="verifiedShift" type="text" readonly></label>
+              <label class="field"><span>Ngày sử dụng</span><input id="verifiedDate" type="text" readonly></label>
+              <label class="field full"><span>Khu vực đăng ký</span><input id="verifiedArea" type="text" readonly></label>
+              <p class="verified-mode full" id="verifiedMode" hidden></p>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- 02. KHU VỰC BÀN GIAO -->
+        <section id="handoverDetailCard" class="card form-card handover-locked">
+
+          <div class="form-title">
+            <span class="step">02</span>
+            <div>
+              <h3>Thông tin khu vực bàn giao</h3>
+              <p>Khai báo đúng khu vực mà sinh viên chịu trách nhiệm.</p>
+            </div>
+            <span class="lock-note"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 10.605V8c0-3.31-2.69-6-6-6S6 4.69 6 8v2.605c-1.15.33-2 1.385-2 2.645v6A2.755 2.755 0 0 0 6.75 22h10.5A2.755 2.755 0 0 0 20 19.25v-6c0-1.255-.85-2.315-2-2.645ZM12 3.5c2.48 0 4.5 2.02 4.5 4.5v2.5h-9V8c0-2.48 2.02-4.5 4.5-4.5Zm6.5 15.75c0 .69-.56 1.25-1.25 1.25H6.75c-.69 0-1.25-.56-1.25-1.25v-6c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v6Z" fill="currentColor"/></svg> Xác minh ở bước 01 để mở</span>
+          </div>
+
+          <div class="form-grid">
+
+            <label class="field">
+              <span>Khu vực phụ trách <b>*</b></span>
+              <input id="handoverArea" name="responsible_area" type="text" maxlength="300" placeholder="Ví dụ: Bàn 1–3, khu máy in 3D" disabled required>
+            </label>
+
+            <label class="field">
+              <span>Tình trạng sau bàn giao <b>*</b></span>
+              <select id="handoverCondition" name="area_condition" disabled required>
+                <option value="">-- Chọn tình trạng --</option>
+                <option value="Sạch và gọn gàng">Sạch và gọn gàng</option>
+                <option value="Đã vệ sinh, cần kiểm tra thêm">Đã vệ sinh, cần kiểm tra thêm</option>
+                <option value="Có sự cố cần xử lý">Có sự cố cần xử lý</option>
+              </select>
+            </label>
+
+            <label class="field full">
+              <span>Ghi chú khu vực</span>
+              <textarea id="handoverAreaNote" name="area_note" rows="3" maxlength="1000" placeholder="Ghi chú thiết bị, bàn ghế, dụng cụ hoặc tình trạng cần lưu ý..." disabled></textarea>
+            </label>
+
+          </div>
+
+        </section>
+
+        <!-- 03. HÌNH ẢNH -->
+        <section id="handoverImageCard" class="card form-card handover-locked">
+
+          <div class="form-title">
+            <span class="step">03</span>
+            <div>
+              <h3>Hình ảnh bàn giao</h3>
+              <p>Mỗi phần cần ít nhất một ảnh và tối đa năm ảnh.</p>
+            </div>
+            <span class="lock-note"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 10.605V8c0-3.31-2.69-6-6-6S6 4.69 6 8v2.605c-1.15.33-2 1.385-2 2.645v6A2.755 2.755 0 0 0 6.75 22h10.5A2.755 2.755 0 0 0 20 19.25v-6c0-1.255-.85-2.315-2-2.645ZM12 3.5c2.48 0 4.5 2.02 4.5 4.5v2.5h-9V8c0-2.48 2.02-4.5 4.5-4.5Zm6.5 15.75c0 .69-.56 1.25-1.25 1.25H6.75c-.69 0-1.25-.56-1.25-1.25v-6c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v6Z" fill="currentColor"/></svg> Xác minh ở bước 01 để mở</span>
+          </div>
+
+          <div class="handover-image-grid">
+
+            <div class="handover-image-section before">
+              <div class="handover-image-title">
+                <div class="handover-image-heading">
+                  <span class="handover-image-badge">TRƯỚC</span>
+                  <div>
+                    <h4>Trước khi sử dụng</h4>
+                    <p>Ghi nhận hiện trạng khu vực trước khi bắt đầu.</p>
+                  </div>
+                </div>
+                <span id="beforeImageCounter" class="handover-image-counter">0/5 ảnh</span>
+              </div>
+
+              <label class="field">
+                <span>Mô tả hiện trạng trước</span>
+                <textarea id="beforeDescription" name="before_description" rows="4" maxlength="1200" placeholder="Mô tả tình trạng khu vực, bàn ghế, thiết bị hoặc dụng cụ trước khi sử dụng..." disabled></textarea>
+              </label>
+
+              <label class="handover-upload-box" for="beforeImages">
+                <input id="beforeImages" name="before_images" type="file" accept="image/jpeg,image/png,image/webp,image/heic" multiple disabled required>
+                <span class="handover-upload-icon"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 5V2.5H18V5h-2.5v1.5H18V9h1.5V6.5H22V5h-2.5Zm-3.885 5.325L11.5 14.44l-1.365-1.365a1.258 1.258 0 0 0-1.77 0L4.5 16.94V5.75c0-.69.56-1.25 1.25-1.25h7.75V3H5.75A2.755 2.755 0 0 0 3 5.75v12.5A2.755 2.755 0 0 0 5.75 21h12.5A2.755 2.755 0 0 0 21 18.25v-4.31l-3.615-3.615a1.258 1.258 0 0 0-1.77 0ZM19.5 18.25c0 .69-.56 1.25-1.25 1.25H5.75a1.25 1.25 0 0 1-1.075-.615L9.25 14.31l2.25 2.25 5-5 3 3v3.69ZM8.5 11a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5Zm0-1.5c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1Z" fill="currentColor"/></svg></span>
+                <div class="handover-upload-text">
+                  <strong>Chọn ảnh trước khi sử dụng</strong>
+                  <small>JPG, PNG, WEBP hoặc HEIC · Tối đa 5 ảnh</small>
+                </div>
+              </label>
+
+              <div id="beforePreview" class="handover-preview"></div>
+            </div>
+
+            <div class="handover-image-section after">
+              <div class="handover-image-title">
+                <div class="handover-image-heading">
+                  <span class="handover-image-badge">SAU</span>
+                  <div>
+                    <h4>Sau khi sử dụng</h4>
+                    <p>Ghi nhận hiện trạng sau khi vệ sinh và sắp xếp.</p>
+                  </div>
+                </div>
+                <span id="afterImageCounter" class="handover-image-counter">0/5 ảnh</span>
+              </div>
+
+              <label class="field">
+                <span>Mô tả hiện trạng sau</span>
+                <textarea id="afterDescription" name="after_description" rows="4" maxlength="1200" placeholder="Mô tả kết quả vệ sinh, sắp xếp và tình trạng khu vực sau khi sử dụng..." disabled></textarea>
+              </label>
+
+              <label class="handover-upload-box" for="afterImages">
+                <input id="afterImages" name="after_images" type="file" accept="image/jpeg,image/png,image/webp,image/heic" multiple disabled required>
+                <span class="handover-upload-icon"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 5V2.5H18V5h-2.5v1.5H18V9h1.5V6.5H22V5h-2.5Zm-3.885 5.325L11.5 14.44l-1.365-1.365a1.258 1.258 0 0 0-1.77 0L4.5 16.94V5.75c0-.69.56-1.25 1.25-1.25h7.75V3H5.75A2.755 2.755 0 0 0 3 5.75v12.5A2.755 2.755 0 0 0 5.75 21h12.5A2.755 2.755 0 0 0 21 18.25v-4.31l-3.615-3.615a1.258 1.258 0 0 0-1.77 0ZM19.5 18.25c0 .69-.56 1.25-1.25 1.25H5.75a1.25 1.25 0 0 1-1.075-.615L9.25 14.31l2.25 2.25 5-5 3 3v3.69ZM8.5 11a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5Zm0-1.5c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1Z" fill="currentColor"/></svg></span>
+                <div class="handover-upload-text">
+                  <strong>Chọn ảnh sau khi sử dụng</strong>
+                  <small>JPG, PNG, WEBP hoặc HEIC · Tối đa 5 ảnh</small>
+                </div>
+              </label>
+
+              <div id="afterPreview" class="handover-preview"></div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- 04. XÁC NHẬN -->
+        <section id="handoverConfirmCard" class="card form-card handover-locked">
+
+          <div class="form-title">
+            <span class="step">04</span>
+            <div>
+              <h3>Xác nhận bàn giao</h3>
+              <p>Kiểm tra lại thông tin và hình ảnh trước khi gửi.</p>
+            </div>
+            <span class="lock-note"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 10.605V8c0-3.31-2.69-6-6-6S6 4.69 6 8v2.605c-1.15.33-2 1.385-2 2.645v6A2.755 2.755 0 0 0 6.75 22h10.5A2.755 2.755 0 0 0 20 19.25v-6c0-1.255-.85-2.315-2-2.645ZM12 3.5c2.48 0 4.5 2.02 4.5 4.5v2.5h-9V8c0-2.48 2.02-4.5 4.5-4.5Zm6.5 15.75c0 .69-.56 1.25-1.25 1.25H6.75c-.69 0-1.25-.56-1.25-1.25v-6c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v6Z" fill="currentColor"/></svg> Xác minh ở bước 01 để mở</span>
+          </div>
+
+          <label class="commitment">
+            <input id="handoverCommitment" name="commitment" type="checkbox" value="true" disabled required>
+            <span>Tôi xác nhận thông tin và hình ảnh bàn giao phản ánh đúng hiện trạng khu vực mà tôi phụ trách.</span>
+          </label>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-outline">Nhập lại</button>
+            <button type="submit" id="handoverSubmitButton" class="btn btn-primary" disabled>Gửi bàn giao</button>
+          </div>
+
+          <div id="handoverMessage" class="form-message"></div>
+
+        </section>
+
+      </form>
+
+    </section>
+
+    <!-- =================================================
+         HƯỚNG DẪN SỬ DỤNG
+    ================================================== -->
+    <section id="guidePanel" class="content-panel active">
+
+      <div class="panel-intro card">
+        <div>
+          <h2 class="section-title">Hướng dẫn sử dụng</h2>
+          <p class="panel-desc">Đọc hướng dẫn trước khi đăng ký: thông tin phòng Lab, quy trình đăng ký – bàn giao, nội quy và các câu hỏi thường gặp.</p>
+          <div class="guide-start">
+            <button type="button" class="btn btn-primary" data-tab-target="schedulePanel">Xem lịch phòng Lab <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.675 11.115 14.53 4.97l-1.06 1.06 5.22 5.22H3v1.5h15.69l-5.22 5.22 1.06 1.06 6.145-6.145a1.258 1.258 0 0 0 0-1.77Z" fill="currentColor"/></svg></button>
+            <button type="button" class="btn btn-outline" data-tab-target="bookingPanel">Đăng ký sử dụng</button>
+          </div>
+        </div>
+        <nav class="guide-jump" aria-label="Mục hướng dẫn">
+          <a href="#guideLabs">Phòng Lab</a>
+          <a href="#guideBooking">Đăng ký</a>
+          <a href="#guideHandover">Bàn giao</a>
+          <a href="#guideRules">Nội quy &amp; an toàn</a>
+          <a href="#guideFaq">Hỏi đáp</a>
+        </nav>
+      </div>
+
+      <!-- THÔNG TIN CHUNG -->
+      <div class="guide-facts" id="guideFacts"></div>
+
+      <!-- SƠ ĐỒ & NỘI DUNG PHÒNG LAB -->
+      <section class="card guide-card" id="guideLabs">
+        <div class="guide-card-head">
+          <div>
+            <h3 class="section-title">Sơ đồ bố trí &amp; nội dung phòng Lab</h3>
+            <p class="panel-desc">Chọn phòng để xem sơ đồ bố trí và các khu chức năng.</p>
+          </div>
+          <div class="guide-lab-tabs" id="guideLabTabs" role="tablist"></div>
+        </div>
+        <div class="guide-lab-body" id="guideLabBody"></div>
+      </section>
+
+      <!-- QUY TRÌNH ĐĂNG KÝ -->
+      <section class="card guide-card" id="guideBooking">
+        <div class="guide-card-head">
+          <div>
+            <h3 class="section-title">Quy trình đăng ký sử dụng</h3>
+            <p class="panel-desc">Sau khi gửi, bạn nhận <b>mã đăng ký</b> dùng để bàn giao phòng.</p>
+          </div>
+          <button type="button" class="btn btn-primary" data-tab-target="bookingPanel">Đăng ký ngay <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.675 11.115 14.53 4.97l-1.06 1.06 5.22 5.22H3v1.5h15.69l-5.22 5.22 1.06 1.06 6.145-6.145a1.258 1.258 0 0 0 0-1.77Z" fill="currentColor"/></svg></button>
+        </div>
+
+        <ol class="guide-steps">
+          <li>
+            <b>1</b>
+            <div>
+              <strong>Xem lịch phòng Lab</strong>
+              <p>Vào mục <em>Lịch phòng Lab</em>, chọn tuần, lọc theo phòng hoặc ca. Thẻ màu xanh/vàng là còn chỗ, thẻ màu hồng là đã đủ nhóm.</p>
+            </div>
+          </li>
+          <li>
+            <b>2</b>
+            <div>
+              <strong>Chọn khung giờ</strong>
+              <p>Nhấn vào thẻ Lab còn chỗ: hệ thống chuyển sang phiếu đăng ký và tự điền Phòng – Ngày – Ca. Cần dùng nhiều ca trong ngày thì đánh dấu thêm các ca ở ô <em>Ca sử dụng</em> – chỉ gửi 1 lần và nhận 1 mã đăng ký dùng chung cho các ca đã chọn.</p>
+            </div>
+          </li>
+          <li>
+            <b>3</b>
+            <div>
+              <strong>Điền thông tin người đại diện</strong>
+              <p>Họ tên, MSSV, email trường, số điện thoại và hình thức <em>Cá nhân</em> hoặc <em>Nhóm</em>.</p>
+            </div>
+          </li>
+          <li>
+            <b>4</b>
+            <div>
+              <strong>Thông tin sử dụng &amp; thành viên</strong>
+              <p>Chọn mục đích, khu vực sử dụng, nhu cầu hỗ trợ kỹ thuật. Nếu là nhóm, chọn <em>hình thức bàn giao</em> (người đại diện hay từng thành viên) và thêm đủ họ tên, MSSV các thành viên.</p>
+            </div>
+          </li>
+          <li>
+            <b>5</b>
+            <div>
+              <strong>Cam kết &amp; gửi đăng ký</strong>
+              <p>Đánh dấu cam kết nội quy rồi bấm <em>Gửi đăng ký</em>.</p>
+            </div>
+          </li>
+          <li>
+            <b>6</b>
+            <div>
+              <strong>Lưu mã đăng ký</strong>
+              <p>Hệ thống hiện <em>mã đăng ký</em> (ví dụ <code>L1C201062026-01</code>). Ghi lại mã này để bàn giao phòng.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- QUY TRÌNH BÀN GIAO -->
+      <section class="card guide-card" id="guideHandover">
+        <div class="guide-card-head">
+          <div>
+            <h3 class="section-title">Quy trình bàn giao phòng</h3>
+            <p class="panel-desc">Thực hiện sau khi sử dụng xong, trước khi rời phòng Lab.</p>
+          </div>
+          <button type="button" class="btn btn-dark" data-tab-target="handoverPanel">Bàn giao phòng <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.675 11.115 14.53 4.97l-1.06 1.06 5.22 5.22H3v1.5h15.69l-5.22 5.22 1.06 1.06 6.145-6.145a1.258 1.258 0 0 0 0-1.77Z" fill="currentColor"/></svg></button>
+        </div>
+
+        <ol class="guide-steps">
+          <li>
+            <b>1</b>
+            <div>
+              <strong>Chụp ảnh trước khi sử dụng</strong>
+              <p>Khi vào phòng, chụp hiện trạng khu vực được giao (bàn ghế, thiết bị, dụng cụ).</p>
+            </div>
+          </li>
+          <li>
+            <b>2</b>
+            <div>
+              <strong>Vệ sinh &amp; sắp xếp</strong>
+              <p>Sau khi sử dụng, vệ sinh khu vực theo 5S, trả thiết bị và dụng cụ về đúng vị trí.</p>
+            </div>
+          </li>
+          <li>
+            <b>3</b>
+            <div>
+              <strong>Xác minh lượt đăng ký</strong>
+              <p>Vào mục <em>Bàn giao phòng</em>, nhập mã đăng ký và MSSV, bấm <em>Kiểm tra thông tin</em>. Nhóm chọn <em>người đại diện</em> thì chỉ đại diện bàn giao; chọn <em>từng thành viên</em> thì mỗi người tự bàn giao. Đăng ký nhiều ca cùng lúc (chung 1 mã): bàn giao 1 lần sau ca cuối.</p>
+            </div>
+          </li>
+          <li>
+            <b>4</b>
+            <div>
+              <strong>Khai báo khu vực</strong>
+              <p>Ghi khu vực phụ trách, chọn tình trạng sau bàn giao và ghi chú nếu có vấn đề cần xử lý.</p>
+            </div>
+          </li>
+          <li>
+            <b>5</b>
+            <div>
+              <strong>Tải ảnh trước – sau</strong>
+              <p>Mỗi phần 1–5 ảnh (JPG, PNG, WEBP hoặc HEIC), kèm mô tả ngắn hiện trạng.</p>
+            </div>
+          </li>
+          <li>
+            <b>6</b>
+            <div>
+              <strong>Xác nhận &amp; gửi</strong>
+              <p>Đánh dấu xác nhận và bấm <em>Gửi bàn giao</em>. Hệ thống cấp <em>mã bàn giao</em> để kỹ thuật viên kiểm tra.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- NỘI QUY & QUY ĐỊNH AN TOÀN (theo văn bản của phòng Lab) -->
+      <section class="card guide-card" id="guideRules">
+        <div class="guide-card-head">
+          <div>
+            <h3 class="section-title">Nội quy &amp; quy định an toàn</h3>
+            <p class="panel-desc">Sinh viên cần đọc kỹ trước khi đăng ký – nội dung này nằm trong cam kết khi gửi đăng ký.</p>
+          </div>
+          <div class="guide-lab-tabs guide-rule-tabs" id="guideRuleTabs" role="tablist">
+            <button type="button" role="tab" class="active" aria-selected="true" data-rule="rules">Nội quy phòng Lab</button>
+            <button type="button" role="tab" aria-selected="false" data-rule="safety">Quy định an toàn</button>
+          </div>
+        </div>
+
+        <div class="guide-hours">
+          <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 4.5V6H8V4.5h8V6h1.5V4.5h.75c.69 0 1.25.56 1.25 1.25V7.5H21V5.75A2.75 2.75 0 0 0 18.25 3h-.75V2H16v1H8V2H6.5v1h-.75A2.75 2.75 0 0 0 3 5.75v12.5A2.75 2.75 0 0 0 5.75 21H9v-1.5H5.75c-.69 0-1.25-.56-1.25-1.25V9H11V7.5H4.5V5.75c0-.69.56-1.25 1.25-1.25h.75ZM11 15.25a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm5.25-6.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Zm.75 3v3.44l1.78 1.78-1.06 1.06-2.22-2.22V11.5H17Z" fill="currentColor"/></svg>
+          <div>
+            <strong>Giờ hoạt động: 08:00 – 17:00 (Thứ Hai đến Thứ Sáu)</strong>
+            <span>Làm việc ngoài giờ cần có sự cho phép của Bộ môn/giảng viên phụ trách.</span>
+          </div>
+        </div>
+
+        <!-- NỘI QUY PHÒNG THÍ NGHIỆM -->
+        <div class="guide-rule-panel" data-rule-panel="rules">
+          <div class="guide-rule-panel-head">
+            <h4>Nội quy phòng thí nghiệm (Lab)</h4>
+            <a class="btn btn-outline btn-sm" href="{{ url_for('static', filename='images/noi-quy-phong-lab.jpg') }}" data-lightbox data-title="Nội quy phòng thí nghiệm (Lab)"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.25 3H5.75A2.755 2.755 0 0 0 3 5.75v12.5A2.755 2.755 0 0 0 5.75 21h12.5A2.755 2.755 0 0 0 21 18.25V5.75A2.755 2.755 0 0 0 18.25 3Zm1.25 15.25c0 .69-.56 1.25-1.25 1.25H5.75c-.69 0-1.25-.56-1.25-1.25V5.75c0-.69.56-1.25 1.25-1.25h12.5c.69 0 1.25.56 1.25 1.25v12.5ZM16.75 6H12.5v1.5h2.94l-3.22 3.22 1.06 1.06 3.22-3.22v2.94H18V7.25C18 6.56 17.44 6 16.75 6ZM7.5 15.44l3.22-3.22 1.06 1.06-3.22 3.22h2.94V18H7.25C6.56 18 6 17.44 6 16.75V12.5h1.5v2.94Z" fill="currentColor"/></svg><span>Xem bản gốc</span></a>
+          </div>
+          <ol class="guide-rulebook">
+            <li>Tuyệt đối tuân thủ các quy định an toàn khi thực hiện các thí nghiệm hoặc thao tác trong phòng Lab.</li>
+            <li>Báo cáo ngay lập tức với giảng viên phụ trách nếu xảy ra sự cố, tai nạn hoặc chấn thương trong quá trình làm việc.</li>
+            <li>Trước khi sử dụng máy móc hoặc thiết bị, cần kiểm tra tình trạng hoạt động của chúng. Nếu có vấn đề, phải báo ngay cho giảng viên hoặc kỹ thuật viên phòng Lab.</li>
+            <li>Phải sử dụng các thiết bị bảo hộ cá nhân (ví dụ: kính bảo hộ, nút bịt tai chống ồn, khẩu trang), không được đi chân trần, mặc trang phục gọn gàng, khi sử dụng các thiết bị như máy khoan, máy tiện, máy cắt, v.v.</li>
+            <li>Vệ sinh khu vực làm việc sạch sẽ và sắp xếp gọn gàng. Thiết bị mượn phải được trả lại đúng vị trí quy định trước khi rời khỏi phòng Lab.</li>
+            <li>Nghiêm cấm tự ý tháo rời, thay đổi, hoặc di dời thiết bị trong phòng thí nghiệm khi chưa được phép.</li>
+            <li>Mọi hoạt động không liên quan đến học phần chuyên môn của Bộ môn chỉ được thực hiện khi có sự cho phép của giảng viên hoặc nhân sự phòng Lab.</li>
+            <li>Không được ăn uống, hút thuốc, chạy nhảy, đùa giỡn hoặc gây ồn ào trong phòng Lab.</li>
+            <li>Không được chơi game, xem phim hoặc sử dụng các thiết bị điện tử vì mục đích cá nhân không liên quan đến học tập và nghiên cứu.</li>
+            <li>Túi xách và vật dụng cá nhân phải để gọn gàng trong tủ hoặc khu vực quy định.</li>
+            <li>Không vẽ bậy lên bàn, tường hoặc thiết bị. Không được tự ý trang trí nếu chưa có sự đồng ý. Không được mang các vật liệu dễ cháy như bông, giấy, xốp bật lửa, bàn là, hoặc bình gas mini, v.v. vào phòng thí nghiệm.</li>
+            <li>
+              Các nhóm môn Các mô hình Ứng dụng trong Logistics (Intro groups) phải tuân thủ nghiêm ngặt hướng dẫn và tuân theo sự phân công vị trí mô hình mẫu của quản trị viên phòng thí nghiệm, hình thức xử lý cho mỗi lần vi phạm như sau:
+              <ul class="guide-penalty">
+                <li><b>Lần 1</b><span>Cảnh cáo</span></li>
+                <li><b>Lần 2</b><span>Trừ 0.5 điểm vào Phiếu đánh giá của Người giám sát (Supervisor’s Evaluation Form)</span></li>
+                <li><b>Lần 3 trở đi</b><span>Trừ 1 điểm vào Phiếu đánh giá của Người giám sát (Supervisor’s Evaluation Form)</span></li>
+              </ul>
+            </li>
+            <li>Mọi hành vi vi phạm nội quy sẽ bị yêu cầu rời khỏi phòng Lab và người vi phạm phải chịu hoàn toàn trách nhiệm.</li>
+          </ol>
+        </div>
+
+        <!-- QUY ĐỊNH AN TOÀN -->
+        <div class="guide-rule-panel" data-rule-panel="safety" hidden>
+          <div class="guide-rule-panel-head">
+            <h4>Quy định an toàn trong phòng thí nghiệm thực hành</h4>
+            <a class="btn btn-outline btn-sm" href="{{ url_for('static', filename='images/quy-dinh-an-toan.jpg') }}" data-lightbox data-title="Quy định an toàn trong phòng thí nghiệm thực hành"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.25 3H5.75A2.755 2.755 0 0 0 3 5.75v12.5A2.755 2.755 0 0 0 5.75 21h12.5A2.755 2.755 0 0 0 21 18.25V5.75A2.755 2.755 0 0 0 18.25 3Zm1.25 15.25c0 .69-.56 1.25-1.25 1.25H5.75c-.69 0-1.25-.56-1.25-1.25V5.75c0-.69.56-1.25 1.25-1.25h12.5c.69 0 1.25.56 1.25 1.25v12.5ZM16.75 6H12.5v1.5h2.94l-3.22 3.22 1.06 1.06 3.22-3.22v2.94H18V7.25C18 6.56 17.44 6 16.75 6ZM7.5 15.44l3.22-3.22 1.06 1.06-3.22 3.22h2.94V18H7.25C6.56 18 6 17.44 6 16.75V12.5h1.5v2.94Z" fill="currentColor"/></svg><span>Xem bản gốc</span></a>
+          </div>
+          <div class="guide-safety">
+            <article>
+              <h5><b>1</b>Yêu cầu chung về an toàn</h5>
+              <ul>
+                <li>Chỉ những cá nhân đã được đào tạo hoặc được giám sát trực tiếp bởi người có chuyên môn mới được phép vận hành thiết bị cơ khí.</li>
+                <li>Phải hiểu rõ nguyên lý hoạt động và rủi ro của thiết bị trước khi sử dụng.</li>
+              </ul>
+            </article>
+            <article>
+              <h5><b>2</b>Trang bị bảo hộ cá nhân (PPE)</h5>
+              <ul>
+                <li>Trang phục bảo hộ phù hợp là bắt buộc khi sử dụng thiết bị cơ khí: Đồng phục kỹ thuật hoặc trang phục gọn gàng, không vướng víu. Đối với nữ, yêu cầu buộc tóc gọn gàng để đảm bảo an toàn.</li>
+                <li>Giày bảo hộ hoặc giày kín mũi, chống trượt. Kính bảo hộ chống va đập. Bịt tai (nếu làm việc với thiết bị gây tiếng ồn lớn).</li>
+              </ul>
+            </article>
+            <article>
+              <h5><b>3</b>An toàn trong vận hành thiết bị</h5>
+              <ul>
+                <li><em>Trước khi vận hành:</em> Kiểm tra toàn bộ thiết bị (điện áp, dây nối, che chắn, trục quay, bộ phận an toàn), đảm bảo khu vực làm việc thông thoáng và không có vật cản/hóa chất dễ cháy.</li>
+                <li><em>Trong khi vận hành:</em> Tuyệt đối không rời khỏi thiết bị nếu không có chế độ tự động và bảo vệ an toàn phù hợp; dừng máy ngay lập tức và báo cáo khi có bất kỳ hiện tượng bất thường nào (rung lắc, tiếng ồn lạ, mùi khét).</li>
+                <li><em>Sau khi vận hành:</em> Tắt và ngắt nguồn điện thiết bị; vệ sinh sạch sẽ khu vực làm việc (loại bỏ phoi, bụi, dầu mỡ dư thừa) và ghi chép tình trạng thiết bị nếu được yêu cầu theo dõi.</li>
+              </ul>
+            </article>
+            <article>
+              <h5><b>4</b>Bảo trì, kiểm định và sửa chữa</h5>
+              <ul>
+                <li>Các thiết bị cơ khí phải được kiểm định theo định kỳ bởi đơn vị có thẩm quyền.</li>
+                <li>Người sử dụng không tự ý sửa chữa khi có hỏng hóc. Báo cáo ngay cho cán bộ kỹ thuật hoặc quản lý phòng.</li>
+                <li>Mọi hoạt động bảo trì phải có nhật ký theo dõi.</li>
+              </ul>
+            </article>
+            <article>
+              <h5><b>5</b>Xử lý sự cố và sơ cứu</h5>
+              <ul>
+                <li>Khi xảy ra sự cố, cần ưu tiên ngắt nguồn điện và sử dụng bình chữa cháy CO₂ hoặc bột khô nếu có cháy thiết bị điện, đồng thời kêu gọi hỗ trợ và cấp cứu.</li>
+                <li>Về sơ cứu, với vết thương đứt tay/chảy máu, hãy rửa sạch, cầm máu và đến y tế. Đối với bỏng, làm mát bằng nước sạch (nếu an toàn) và không tự ý bôi thuốc. Nếu bị kẹt tay, giữ nguyên hiện trường và chờ cứu hộ chuyên nghiệp.</li>
+              </ul>
+            </article>
+            <article>
+              <h5><b>6</b>Quản lý và giám sát thiết bị</h5>
+              <ul>
+                <li>Mỗi thiết bị cơ khí cần có: Hồ sơ quản lý riêng (bao gồm thông tin kỹ thuật, hướng dẫn sử dụng, lịch bảo trì).</li>
+                <li>Biển cảnh báo nguy hiểm rõ ràng, có hướng dẫn an toàn ngắn gọn.</li>
+                <li>Người phụ trách thiết bị chịu trách nhiệm theo dõi tình trạng và giám sát việc sử dụng.</li>
+              </ul>
+            </article>
+            <article class="is-wide">
+              <h5><b>7</b>Trách nhiệm và xử lý vi phạm</h5>
+              <p>Người sử dụng thiết bị chịu trách nhiệm hoàn toàn nếu không tuân thủ quy định an toàn và gây ra sự cố. Vi phạm quy định có thể dẫn đến:</p>
+              <ul class="guide-consequence">
+                <li>Đình chỉ quyền sử dụng thiết bị.</li>
+                <li>Bồi thường thiệt hại nếu có hư hỏng thiết bị hoặc ảnh hưởng đến người khác.</li>
+                <li>Xử lý kỷ luật theo quy định của cơ sở đào tạo hoặc tổ chức quản lý.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CÂU HỎI THƯỜNG GẶP -->
+      <section class="card guide-card" id="guideFaq">
+        <h3 class="section-title">Câu hỏi thường gặp</h3>
+        <div class="guide-faq" id="guideFaqList"></div>
+      </section>
+
+    </section>
+
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+<!-- =====================================================
+     FOOTER (giống Hệ thống quản lý)
+====================================================== -->
+<footer class="site-footer">
+  <div class="container footer-main">
+
+    <div>
+      <img src="{{ url_for('static', filename='images/logo-footer.png') }}" alt="School of Technology">
+      <p>Cổng sinh viên đăng ký sử dụng và bàn giao phòng Lab của Khoa Kỹ thuật và Quản lý Công nghiệp.</p>
+    </div>
+
+    <div>
+      <h4>Khoa Kỹ thuật và Quản lý Công nghiệp</h4>
+      <p>Điện thoại: 028.71098.256 (4340)</p>
+      <p>Email: <a href="mailto:k.iem@vlu.edu.vn">k.iem@vlu.edu.vn</a></p>
+    </div>
+
+    <div>
+      <h4>Trường Đại học Văn Lang</h4>
+      <p><a href="https://www.vlu.edu.vn/" target="_blank" rel="noopener noreferrer">www.vlu.edu.vn</a></p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© Van Lang University. All rights reserved.</span>
+      <span>Khoa Kỹ thuật và Quản lý Công nghiệp</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =====================================================
+     HỘP THOẠI THÔNG BÁO (giống Hệ thống quản lý)
+====================================================== -->
+<div class="vlu-modal vlu-dialog" id="vluDialog" hidden>
+  <div class="vlu-modal-dialog" role="alertdialog" aria-modal="true" aria-labelledby="vluDialogTitle">
+    <div class="vlu-modal-head">
+      <div class="dialog-title">
+        <span class="dialog-icon" id="vluDialogIcon"></span>
+        <div>
+          <h3 id="vluDialogTitle">Thông báo</h3>
+          <p id="vluDialogSub"></p>
+        </div>
+      </div>
+      <button type="button" class="vlu-modal-close" data-dialog-cancel aria-label="Đóng"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" fill="currentColor"/></svg></button>
+    </div>
+    <div class="vlu-modal-body" id="vluDialogBody"></div>
+    <div class="vlu-modal-foot">
+      <button type="button" class="btn btn-outline" id="vluDialogCancel" data-dialog-cancel>Hủy</button>
+      <button type="button" class="btn btn-dark" id="vluDialogOk">Đã hiểu</button>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     THANH TIẾN ĐỘ ĐỌC HƯỚNG DẪN (bắt buộc trước khi đăng ký)
+====================================================== -->
+<div class="read-gate" id="readGate" hidden>
+  <div class="container read-gate-inner">
+    <div class="read-gate-text">
+      <strong id="readGateTitle">Đọc hết hướng dẫn để tiếp tục đăng ký</strong>
+      <span id="readGateSub">Kéo xuống cuối trang: sơ đồ phòng Lab, quy trình, nội quy, quy định an toàn và hỏi đáp.</span>
+    </div>
+    <div class="read-gate-meter" aria-hidden="true"><span id="readGateBar"></span></div>
+    <b class="read-gate-pct" id="readGatePct">0%</b>
+    <button type="button" class="btn btn-primary" id="readGateDone" disabled>Xác nhận đã đọc</button>
+  </div>
+</div>
+
+<!-- =====================================================
+     XEM ẢNH (sơ đồ phòng Lab, bản gốc nội quy)
+====================================================== -->
+<div class="vlu-lightbox" id="vluLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
+  <div class="lightbox-bar">
+    <strong id="lightboxTitle"></strong>
+    <div class="lightbox-actions">
+      <button type="button" class="lightbox-btn" id="lightboxZoom"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="m16.16 15.1 5.62 5.62-1.06 1.06-5.62-5.62A7.96 7.96 0 0 1 10 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8a7.96 7.96 0 0 1-1.84 5.1ZM3.5 10c0 3.585 2.915 6.5 6.5 6.5s6.5-2.915 6.5-6.5-2.915-6.5-6.5-6.5A6.506 6.506 0 0 0 3.5 10Zm5.75-.75V6.5h1.5v2.75h2.75v1.5h-2.75v2.75h-1.5v-2.75H6.5v-1.5h2.75Z" fill="currentColor"/></svg><span>Phóng to</span></button>
+      <a class="lightbox-btn" id="lightboxDownload" href="#" download><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.885 16.675a1.245 1.245 0 0 1-.885.365c-.32 0-.64-.12-.885-.365L6.47 12.03l1.06-1.06 3.72 3.72V3h1.5v11.69l3.72-3.72 1.06 1.06-4.645 4.645ZM19.5 18.25V15.5H21v2.75A2.755 2.755 0 0 1 18.25 21H5.75A2.755 2.755 0 0 1 3 18.25V15.5h1.5v2.75c0 .69.56 1.25 1.25 1.25h12.5c.69 0 1.25-.56 1.25-1.25Z" fill="currentColor"/></svg><span>Tải về</span></a>
+      <button type="button" class="lightbox-btn lightbox-close" data-lightbox-close aria-label="Đóng"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" fill="currentColor"/></svg><span>Đóng</span></button>
+    </div>
+  </div>
+  <div class="lightbox-stage" id="lightboxStage">
+    <img id="lightboxImg" alt="">
+  </div>
+  <p class="lightbox-hint">Nhấn <kbd>Esc</kbd> hoặc bấm ra ngoài ảnh để đóng</p>
+</div>
+
+<script>
+/* =========================================================
+   HỘP THOẠI DÙNG CHUNG (cùng mẫu với Hệ thống quản lý)
+========================================================= */
+const VLU_DIALOG_ICONS = {
+  danger: `<svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.86 21c-.45 0-.855-.235-1.08-.625a1.23 1.23 0 0 1 0-1.25L10.915 3.14a1.25 1.25 0 0 1 2.17 0l9.14 15.99c.225.39.22.86 0 1.25-.225.39-.63.625-1.08.625L21.14 21H2.86Zm.435-1.5H20.71L12 4.26 3.29 19.5h.005Zm9.455-5V9h-1.5v5.5h1.5ZM13 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/></svg>`,
+  warning: `<svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C6.485 22 2 17.515 2 12S6.485 2 12 2s10 4.485 10 10-4.485 10-10 10Zm0-18.5c-4.685 0-8.5 3.815-8.5 8.5 0 4.685 3.815 8.5 8.5 8.5 4.685 0 8.5-3.815 8.5-8.5 0-4.685-3.815-8.5-8.5-8.5Zm.75 10V8h-1.5v5.5h1.5ZM13 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/></svg>`,
+  success: `<svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 12c0 5.515 4.485 10 10 10s10-4.485 10-10S17.515 2 12 2 2 6.485 2 12Zm1.5 0c0-4.685 3.815-8.5 8.5-8.5 4.685 0 8.5 3.815 8.5 8.5 0 4.685-3.815 8.5-8.5 8.5-4.685 0-8.5-3.815-8.5-8.5Zm6.115 3.175c.245.245.565.365.885.365.32 0 .64-.12.885-.365L17.28 9.28l-1.06-1.06-5.72 5.72-2.22-2.22-1.06 1.06 2.395 2.395Z" fill="currentColor"/></svg>`,
+  info: `<svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C6.485 22 2 17.515 2 12S6.485 2 12 2s10 4.485 10 10-4.485 10-10 10Zm0-18.5c-4.685 0-8.5 3.815-8.5 8.5 0 4.685 3.815 8.5 8.5 8.5 4.685 0 8.5-3.815 8.5-8.5 0-4.685-3.815-8.5-8.5-8.5Zm.75 12.5v-5.5h-1.5V16h1.5ZM13 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/></svg>`
+};
+
+function vluEscape(text) {
+  return String(text ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+function vluDialog(options) {
+  const opts = Object.assign({ tone: "info", okText: "Đã hiểu", cancelText: null }, options || {});
+  const modal = document.getElementById("vluDialog");
+  const ok = document.getElementById("vluDialogOk");
+  const cancel = document.getElementById("vluDialogCancel");
+
+  modal.dataset.tone = opts.tone;
+  document.getElementById("vluDialogIcon").innerHTML = VLU_DIALOG_ICONS[opts.tone] || VLU_DIALOG_ICONS.info;
+  document.getElementById("vluDialogTitle").textContent = opts.title || "Thông báo";
+  document.getElementById("vluDialogSub").textContent = opts.subtitle || "";
+  document.getElementById("vluDialogSub").hidden = !opts.subtitle;
+
+  const rows = (opts.rows || []).filter(row => row && row[1] !== undefined && row[1] !== null && row[1] !== "");
+  document.getElementById("vluDialogBody").innerHTML = `
+    ${opts.intro ? `<p class="dialog-intro">${vluEscape(opts.intro)}</p>` : ""}
+    ${rows.length ? `<table class="dialog-table"><tbody>${rows.map(([label, value]) =>
+      `<tr><th>${vluEscape(label)}</th><td>${vluEscape(value)}</td></tr>`).join("")}</tbody></table>` : ""}
+    ${opts.note ? `<p class="dialog-note">${vluEscape(opts.note)}</p>` : ""}
+  `;
+
+  ok.textContent = opts.okText;
+  ok.className = `btn ${opts.tone === "danger" ? "btn-red" : "btn-dark"}`;
+  cancel.textContent = opts.cancelText || "";
+  cancel.hidden = !opts.cancelText;
+
+  modal.hidden = false;
+  document.body.classList.add("modal-open");
+  setTimeout(() => ok.focus(), 30);
+
+  return new Promise(resolve => {
+    const close = result => {
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+      document.removeEventListener("keydown", onKey, true);
+      resolve(result);
+    };
+    const onKey = event => { if (event.key === "Escape") close(false); };
+
+    ok.onclick = () => close(true);
+    modal.querySelectorAll("[data-dialog-cancel]").forEach(el => (el.onclick = () => close(false)));
+    modal.onclick = event => { if (event.target === modal) close(false); };
+    document.addEventListener("keydown", onKey, true);
+  });
+}
+</script>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<script src="{{ url_for('static', filename='lab-guide.js') }}"></script>
+<script src="{{ url_for('static', filename='guide.js') }}"></script>
+<script src="{{ url_for('static', filename='mobile.js') }}"></script>
+
+</body>
+</html>
